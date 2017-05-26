@@ -1,0 +1,11 @@
+package br.com.fiap.resource;
+
+import javax.ws.rs.Path;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.UriInfo;
+
+@Path("/produto")
+public class ProdutoResource {
+
+	public Response cadastrar(Produto produto, @Context UriInfo uriInfo)
+}

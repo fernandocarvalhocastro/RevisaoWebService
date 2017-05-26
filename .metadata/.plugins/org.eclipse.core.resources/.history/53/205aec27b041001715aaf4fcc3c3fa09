@@ -1,0 +1,34 @@
+package br.com.fiap.resource;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriBuilder;
+import javax.ws.rs.core.UriInfo;
+
+import br.com.fiap.bo.ProdutoBO;
+import br.com.fiap.entity.Produto;
+import br.com.fiap.exception.CommitErrorException;
+
+@Path("/produto")
+public class ProdutoResource {
+
+	@Consumes(MediaType.APPLICATION_JSON)
+	@POST
+	public Response cadastrar(Produto produto, @Context UriInfo uriInfo){
+		ProdutoBO bo = new ProdutoBO();
+		try {
+			bo.cadastrar(produto);
+			UriBuilder builder = uriInfo.getAbsolutePathBuilder();
+			builder.path(Integer.toString(produto.getCodigo()));
+			return Response.created(builder.build()).build();
+		} catch (CommitErrorException e) {
+			return Response.serverError().build();
+			e.printStackTrace();
+		}
+		return null;
+	}
+}

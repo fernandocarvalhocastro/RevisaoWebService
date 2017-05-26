@@ -1,0 +1,12 @@
+package br.com.fiap.to.Produto;
+
+import br.com.fiap.entity.Produto;
+
+public class ProdutoRepository {
+	
+	private static final String URL = "http://localhost:8080/RestProvider/rest/produto/";
+	
+	public void cadastrar(Produto produto){
+		
+	}
+}

@@ -1,0 +1,6 @@
+package br.com.fiap.to.Produto;
+
+public class ProdutoRepository {
+	
+	private static final String URL = "http://localhost:8080/RestProvider/rest/produto/" 
+}
